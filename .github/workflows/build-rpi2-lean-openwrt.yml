@@ -264,7 +264,7 @@ jobs:
         uses: ncipollo/release-action@v1.8.0
         if: env.GENERATE_STATUS == 'success' && env.UPLOAD_RELEASE == 'true'
         with:
-          name: OpenWrt-${{ env.TARGET }}-${{ env.SUBTARGET }}
+          name: OpenWrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-$(date +%Y)-$(date +%m)-$(date +%d)
           allowUpdates: true
           tag: ${{ env.TARGET }}-${{ env.SUBTARGET }}
           commit: main
