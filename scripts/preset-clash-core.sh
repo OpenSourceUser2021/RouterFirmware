@@ -19,6 +19,6 @@ clash_game_url=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/relea
 wget -qO- $open_clash_main_url | tar xOvz > files/etc/openclash/core/clash
 # wget -qO- $offical_clash_main_url | gunzip -c > files/etc/openclash/core/clash
 wget -qO- $clash_tun_url | gunzip -c > files/etc/openclash/core/clash_tun
-wget -qO- $clash_game_url | tar xOvz > files/etc/openclash/core/clash_game
+#-- wget -qO- $clash_game_url | tar xOvz > files/etc/openclash/core/clash_game
 
 chmod +x files/etc/openclash/core/clash*
