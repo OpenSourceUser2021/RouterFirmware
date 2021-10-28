@@ -40,22 +40,13 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
+          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo -E apt-get -qq update
-          sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004) rdate
+          sudo -E apt-get -qq install squashfs-tools $(curl -fsSL git.io/depends-ubuntu-2004)
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
           sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           docker image prune -a -f
-
-      - name: Free Up More Space
-        uses: easimon/maximize-build-space@master
-        with:
-          root-reserve-mb: 256
-          swap-size-mb: 1024
-          remove-dotnet: 'true'
-          remove-android: 'true'
-          remove-haskell: 'true'
-          overprovision-lvm: 'true'
 
       - name: Checkout
         uses: actions/checkout@main
