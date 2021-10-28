@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: New Raspberry Pi 2B OpenWrt
+name: Raspberry Pi 2B immortalwrt
 
 on:
   workflow_dispatch:
