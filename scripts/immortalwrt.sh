@@ -22,17 +22,22 @@ mkdir package/community
 pushd package/community
 
 # oem --->
+pushd feeds/luci/applications
+rm -rf openwrt-passwall
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 sed -i 's/ upx\/host//g' openwrt-passwall/v2ray-plugin/Makefile
 grep -lr upx/host openwrt-passwall/* | xargs -t -I {} sed -i '/upx\/host/d' {}
 
+rm -rf luci-app-serverchan
 # Add ServerChan
 git clone --depth=1 https://github.com/tty228/luci-app-serverchan
 
+rm -rf OpenClash
 # Add OpenClash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash
 cp -r OpenClash/luci-app-openclash/root/usr/share/openclash/yacd/ OpenClash/luci-app-openclash/root/usr/share/openclash/dashboard/
+popd
 # oem <---
 
 # Add luci-app-bypass
