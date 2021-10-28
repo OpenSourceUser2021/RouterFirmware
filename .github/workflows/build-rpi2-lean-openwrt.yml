@@ -260,15 +260,19 @@ jobs:
           rm -rf packages
           df -hT $PWD
           echo "::set-output name=ORGANIZE_STATUS::success"
+          
+      - name: Set release date
+        run: |
+          echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
 
       - name: Deploy Files To Release
         id: release
         uses: ncipollo/release-action@v1.8.0
         if: env.GENERATE_STATUS == 'success' && env.UPLOAD_RELEASE == 'true'
         with:
-          name: OpenWrt-${{ env.TARGET }}-${{ env.SUBTARGET }}
+          name: OpenWrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
           allowUpdates: true
-          tag: ${{ env.TARGET }}-${{ env.SUBTARGET }}
+          tag: ${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
           commit: main
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
