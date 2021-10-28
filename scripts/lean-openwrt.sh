@@ -40,6 +40,7 @@ git clone --depth=1 https://github.com/tty228/luci-app-serverchan
 
 # Add OpenClash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash
+cp -r OpenClash/luci-app-openclash/root/usr/share/openclash/yacd/ OpenClash/luci-app-openclash/root/usr/share/openclash/dashboard/
 
 # Add luci-app-diskman
 git clone --depth=1 https://github.com/SuLingGG/luci-app-diskman
