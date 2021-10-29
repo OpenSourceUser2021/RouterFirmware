@@ -422,7 +422,8 @@ jobs:
       
       - name: Set release date
         run: |
-          echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
+          echo "RELEASE_DATE=$(date +"%Y.%m.%d-%H%M")" >> ${GITHUB_ENV}
+          
 
       - name: Deploy Files To Release
         uses: ncipollo/release-action@v1.8.0
