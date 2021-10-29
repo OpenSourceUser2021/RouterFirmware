@@ -58,6 +58,9 @@ svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-wrtbwmon
 svn co https://github.com/sirpdboy/sirpdboy-package/trunk/wrtbwmon
 rm -rf ../lean/luci-app-wrtbwmon
 
+#add luci-app-acme
+git clone --depth=1 https://github.com/openwrt/luci/tree/master/applications/luci-app-acme
+
 # Add luci-app-unblockneteasemusic
 git clone --depth=1 https://github.com/immortalwrt/luci-app-unblockneteasemusic
 rm -rf ../lean/luci-app-unblockmusic
