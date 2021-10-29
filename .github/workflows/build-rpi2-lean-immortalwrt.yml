@@ -284,6 +284,7 @@ jobs:
         run: |
           cd $OPENWRTROOT
           make download -j64
+          cp -r feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/yacd/ feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/dashboard/
 
       - name: Compile Packages
         run: |
@@ -310,7 +311,6 @@ jobs:
           echo "over_voltage=2 #d4=0" >> target/linux/bcm27xx/image/config.txt
           echo "temp_limit=80 #d4=85" >> target/linux/bcm27xx/image/config.txt
           echo "dtparam=sd_overclock=85 #d4=50" >> target/linux/bcm27xx/image/config.txt
-          cp -r bin/packages/$PLATFORM/luci/luci-app-openclash/root/usr/share/openclash/yacd/ bin/packages/$PLATFORM/luci/luci-app-openclash/root/usr/share/openclash/dashboard/
           # oem <---
           mkdir -p files/etc/uci-defaults/
           cp ../scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
