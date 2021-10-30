@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: NanoPi R2S/R4S OpenWrt immortalwrt
+name: NanoPi R2S/R2C/R4S immortalwrt
 
 on:
   workflow_dispatch:
