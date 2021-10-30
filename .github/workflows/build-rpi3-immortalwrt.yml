@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Raspberry Pi 4 immortalwrt
+name: Raspberry Pi 3 immortalwrt
 
 on:
   workflow_dispatch:
