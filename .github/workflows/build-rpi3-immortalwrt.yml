@@ -271,7 +271,6 @@ jobs:
           echo -e "CONFIG_USB_LAN78XX=y\nCONFIG_USB_NET_DRIVERS=y" >> target/linux/bcm27xx/bcm2711/config-5.4
           ../$DIY_SH
           ../scripts/preset-clash-core.sh armv8
-          ../scripts/preset-terminal-tools.sh
           ../scripts/enable-rpi4-wifi.sh
           make defconfig
 
