@@ -415,15 +415,19 @@ jobs:
           cd $OPENWRTROOT/bin/targets/$TARGET/$SUBTARGET
           rm -rf packages
           df -hT $PWD
+          
+      - name: Set release date
+        run: |
+          echo "RELEASE_DATE=$(date +"%Y.%m.%d-%H%M")" >> ${GITHUB_ENV}
 
       - name: Deploy Files To Release
         uses: ncipollo/release-action@v1.8.0
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
-          name: openwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}
+          name: openwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
           allowUpdates: true
           replacesArtifacts: true
-          tag: ${{ env.TARGET }}-${{ env.SUBTARGET }}
+          tag: ${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ env.OPENWRTROOT }}/bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/*
