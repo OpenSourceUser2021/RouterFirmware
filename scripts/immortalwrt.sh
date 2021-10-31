@@ -70,3 +70,6 @@ sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
 
 # Change default shell to zsh
 #--oem sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
+
+# Change default shell from /bin/ash to /bin/bash
+sed -i 's/\/bin\/ash/\/bin\/bash/g' package/base-files/files/etc/passwd
