@@ -16,7 +16,7 @@ on:
 #    types: started
 
 env:
-  CONFIG_FILE: config/N1.config
+  CONFIG_FILE: config/BOX/S905D.config
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
   SOURCE_BRANCH: openwrt-18.06-k5.4
   DIY_SH: scripts/immortalwrt.sh
