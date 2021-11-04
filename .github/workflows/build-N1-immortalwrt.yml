@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: N1 immortalwrt
+name: Build N1 immortalwrt
 
 on:
   workflow_dispatch:
@@ -269,7 +269,7 @@ jobs:
           chmod +x scripts/*.sh
           cd $OPENWRTROOT
           ../$DIY_SH
-          ../scripts/preset-clash-core.sh armv7
+          ../scripts/preset-clash-core.sh armv8
           make defconfig
 
       - name: Install Feeds
