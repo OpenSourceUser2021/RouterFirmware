@@ -451,7 +451,29 @@ jobs:
       #     ./OneDriveUploader -f -c "./auth.json" -s $SOURCE_TARGETS -r "archive/$(date +%Y)/$(date +%m)/$(date +%d)/releases/targets/$TARGET/$SUBTARGET"
       #     ./OneDriveUploader -f -c "./auth.json" -s $OPENWRTROOT/$TARGET-$SUBTARGET.zip -r "archive/$(date +%Y)/$(date +%m)/$(date +%d)/releases/bin-archive"
       #     echo "::warning file=mirror.openwrt.cc::Download Link: https://mirror.openwrt.cc/releases/targets/bcm27xx/bcm2709"
-
+     
+      # ref https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md
+      # kernel version -> https://github.com/ophub/flippy-kernel/tree/main/library/
+      - name: Package Armvirt as OpenWrt
+        uses: ophub/amlogic-s9xxx-openwrt@main
+        with:
+          armvirt64_path: $OPENWRTROOT/bin/targets/*/*/*.tar.gz
+          amlogic_openwrt: s905d
+          amlogic_kernel: 5.4.157
+          auto_kernel: true
+          amlogic_size: 1024
+          
+      - name: Upload OpenWrt Firmware to Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: immortalwrt_s905d_N1_${{ env.PACKAGED_OUTPUTDATE }}
+          artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            This is OpenWrt firmware for Amlogic S9xxx N1 STB.
+ 
+    
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v1
         with:
