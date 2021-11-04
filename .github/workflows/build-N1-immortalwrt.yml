@@ -457,7 +457,7 @@ jobs:
       - name: Package Armvirt as OpenWrt
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
-          armvirt64_path: $OPENWRTROOT/bin/targets/*/*/*.tar.gz
+          armvirt64_path: ${{ env.OPENWRTROOT }}/bin/targets/*/*/*.tar.gz
           amlogic_openwrt: s905d
           amlogic_kernel: 5.4.157
           auto_kernel: true
