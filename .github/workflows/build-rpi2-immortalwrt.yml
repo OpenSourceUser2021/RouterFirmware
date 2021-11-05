@@ -20,7 +20,6 @@ env:
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
   SOURCE_BRANCH: openwrt-18.06-k5.4
   DIY_SH: scripts/immortalwrt.sh
-  DIY2_SH: scripts/prebuild.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
   TOOLCHAIN_TAG: toolchain
   TOOLCHAIN_RELEASE_UPLOAD: true
@@ -53,7 +52,6 @@ jobs:
           sudo -E apt-get -qq clean
           sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           docker image prune -a -f
-
       - name: Checkout
         uses: actions/checkout@main
 
@@ -65,7 +63,6 @@ jobs:
           cd openwrt
           echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
           echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-
       - name: Generate Toolchain Config
         run: |
           [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRTROOT/.config
@@ -73,7 +70,6 @@ jobs:
           echo -e "\nCONFIG_ALL_NONSHARED=y" >> $OPENWRTROOT/.config
           cd $OPENWRTROOT
           make defconfig > /dev/null 2>&1
-
       - name: Generate Variables
         id: env
         run: |
@@ -99,7 +95,6 @@ jobs:
           export TOOLCHAIN_IMAGE="toolchain-$SOURCE_OWNER-$SOURCE_REPO-$SOURCE_BRANCH-$TARGET-$SUBTARGET"
           echo "TOOLCHAIN_IMAGE=$TOOLCHAIN_IMAGE" >> $GITHUB_ENV
           echo "::set-output name=TOOLCHAIN_IMAGE::$(echo $TOOLCHAIN_IMAGE)"
-
       - name: Compare Toolchain Hash
         id: hash
         run: |
@@ -113,21 +108,18 @@ jobs:
           if [ -z "$CACHE_HASH" ] || [ "$CURRENT_HASH" != "$CACHE_HASH" ]; then
             echo "::set-output name=REBUILD_TOOLCHAIN::true"
           fi
-
       - name: Install Feeds
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
         run: |
           cd $OPENWRTROOT
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-
       - name: Compile Tools
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
         run: |
           cd $OPENWRTROOT
           echo -e "$(nproc) thread compile"
           make tools/compile -j$(nproc) || make tools/compile -j1 V=s
-
       - name: Compile Toolchain
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
         run: |
@@ -135,7 +127,6 @@ jobs:
           echo -e "$(nproc) thread compile"
           make toolchain/compile -j$(nproc) || make toolchain/compile -j1 V=s
           rm -rf .config* dl bin
-
       - name: Generate Toolchain Image
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
         run: |
@@ -146,7 +137,6 @@ jobs:
           cd $OPENWRTROOT
           echo $CURRENT_HASH > ../output/toolchain-$SOURCE_OWNER-$SOURCE_REPO-$SOURCE_BRANCH-$TARGET-$SUBTARGET.hash
           ls -lh ../output
-
       # - name: Upload Toolchain Image To Artifact
       #   if: env.TOOLCHAIN_RELEASE_UPLOAD != 'true' && steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       #   uses: actions/upload-artifact@main
@@ -181,7 +171,6 @@ jobs:
           echo "TARGET=$(echo '${{needs.Toolchain.outputs.TARGET}}')" >> $GITHUB_ENV
           echo "SUBTARGET=$(echo '${{needs.Toolchain.outputs.SUBTARGET}}')" >> $GITHUB_ENV
           echo "TOOLCHAIN_IMAGE=$(echo '${{needs.Toolchain.outputs.TOOLCHAIN_IMAGE}}')" >> $GITHUB_ENV
-
       - name: Initialization Environment
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -193,7 +182,6 @@ jobs:
           sudo -E apt-get -qq clean
           sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           docker image prune -a -f
-
       - name: Combine Disks
         run: |
           sudo swapoff -a
@@ -217,7 +205,6 @@ jobs:
           sudo mount -B $GITHUB_WORKSPACE/tmp /tmp
           df -hT $GITHUB_WORKSPACE
           sudo btrfs filesystem usage $GITHUB_WORKSPACE
-
       - name: Checkout
         run: |
           cd $GITHUB_WORKSPACE
@@ -225,7 +212,6 @@ jobs:
           git remote add origin https://github.com/$GITHUB_REPOSITORY
           git fetch
           git checkout -t origin/$CURRENT_BRANCH
-
       # - name: Download Toolchain Image
       #   if: env.TOOLCHAIN_RELEASE_UPLOAD != 'true'
       #   uses: actions/download-artifact@v2
@@ -261,7 +247,6 @@ jobs:
           sudo mount -t overlay overlay -o lowerdir=openwrt-ro,upperdir=overlay,workdir=workdir openwrt
           cd $OPENWRTROOT
           git pull
-
       - name: Load Custom Configuration
         run: |
           [ -e files ] && mv files $OPENWRTROOT/files
@@ -272,20 +257,17 @@ jobs:
           ../$DIY_SH
           ../scripts/preset-clash-core.sh armv7
           make defconfig
-
       - name: Install Feeds
         run: |
           cd $OPENWRTROOT
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-
       - name: Download DL Package
         id: download
         run: |
           cd $OPENWRTROOT
           make download -j64
           cp -r feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/yacd/ feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/dashboard/
-
       - name: Compile Packages
         run: |
           cd $OPENWRTROOT
@@ -295,17 +277,14 @@ jobs:
           make target/compile -j$(nproc) || make target/compile -j1 V=s IGNORE_ERRORS=1
           make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j1 V=s IGNORE_ERRORS=1
           make package/index
-
       - name: Generate Firmware
         id: generate
         run: |
-          chmod +x scripts/*.sh
           cd data/opkg
           sed -i "s/subtarget/$SUBTARGET/g" distfeeds.conf
           sed -i "s/target\//$TARGET\//g" distfeeds.conf
           sed -i "s/platform/$PLATFORM/g" distfeeds.conf
           cd $OPENWRTROOT
-          ../$DIY2_SH
           # oem -overclock--->
           # echo "dtparam=i2c_arm=on,audio=on" >> target/linux/bcm27xx/image/config.txt
           echo "arm_freq=1050 #d4=900" >> target/linux/bcm27xx/image/config.txt
@@ -314,20 +293,29 @@ jobs:
           echo "temp_limit=80 #d4=85" >> target/linux/bcm27xx/image/config.txt
           echo "dtparam=sd_overclock=85 #d4=50" >> target/linux/bcm27xx/image/config.txt
           # oem <---
+          mkdir -p files/etc/uci-defaults/
+          cp ../scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
+          mkdir -p files/www/snapshots
+          cp -r bin/targets files/www/snapshots
+          mkdir -p files/etc/opkg
+          cp ../data/opkg/distfeeds.conf files/etc/opkg
+          mkdir -p files/www/ipv6-modules
+          cp bin/packages/$PLATFORM/luci/luci-proto-ipv6* files/www/ipv6-modules
+          cp bin/packages/$PLATFORM/base/{ipv6helper*,odhcpd-ipv6only*,odhcp6c*,6in4*} "files/www/ipv6-modules"
+          cp bin/targets/$TARGET/$SUBTARGET/packages/{ip6tables*,kmod-nf-nat6*,kmod-ipt-nat6*,kmod-sit*,kmod-ip6tables-extra*} "files/www/ipv6-modules"
+          mkdir -p files/bin
+          cp ../scripts/ipv6-helper.sh files/bin/ipv6-helper
           make package/install -j$(nproc) || make package/install -j1 V=s
           make target/install -j$(nproc) || make target/install -j1 V=s
           make json_overview_image_info
           make checksum
-
       - name: Compress Bin Folder
         run: |
           cd $OPENWRTROOT
           zip -r $TARGET-$SUBTARGET.zip bin
-
       - name: Print Disk Usage
         run: |
           sudo btrfs filesystem usage $GITHUB_WORKSPACE
-
       - name: Upload Bin Archive
         uses: actions/upload-artifact@main
         with:
@@ -352,7 +340,6 @@ jobs:
           echo "TARGET=$(echo '${{needs.Toolchain.outputs.TARGET}}')" >> $GITHUB_ENV
           echo "SUBTARGET=$(echo '${{needs.Toolchain.outputs.SUBTARGET}}')" >> $GITHUB_ENV
           echo "TOOLCHAIN_IMAGE=$(echo '${{needs.Toolchain.outputs.TOOLCHAIN_IMAGE}}')" >> $GITHUB_ENV
-
       - name: Initialization Environment
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -360,7 +347,6 @@ jobs:
           sudo -E apt-get -qq update
           sudo -E apt-get -qq install zip unzip rsync
           sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
       - name: Download Bin Archive
         uses: actions/download-artifact@v2
         with:
@@ -371,7 +357,6 @@ jobs:
         run: |
           cd $OPENWRTROOT
           unzip $TARGET-$SUBTARGET.zip
-
       # - name: Deploy Files To HostHatch Node
       #   env:
       #     HOST: "${{ secrets.REMOTE_USER }}@${{ secrets.HOSTHATCH_IP }}"
@@ -415,7 +400,6 @@ jobs:
         run: |
           echo "RELEASE_DATE=$(date +"%Y.%m.%d-%H%M")" >> ${GITHUB_ENV}
           
-
       - name: Deploy Files To Release
         uses: ncipollo/release-action@v1.8.0
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
