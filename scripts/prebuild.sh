@@ -1,9 +1,9 @@
 mkdir -p files/etc/uci-defaults/
 cp ../scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
-mkdir -p files/www/snapshots
-cp -r bin/targets files/www/snapshots
 mkdir -p files/etc/opkg
 cp ../data/opkg/distfeeds.conf files/etc/opkg
+mkdir -p files/www/snapshots
+cp -r bin/targets files/www/snapshots
 mkdir -p files/www/ipv6-modules
 cp bin/packages/$PLATFORM/luci/luci-proto-ipv6* files/www/ipv6-modules
 cp bin/packages/$PLATFORM/base/{ipv6helper*,odhcpd-ipv6only*,odhcp6c*,6in4*} "files/www/ipv6-modules"
