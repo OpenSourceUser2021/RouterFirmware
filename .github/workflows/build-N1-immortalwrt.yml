@@ -427,9 +427,9 @@ jobs:
         with:
           armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
           amlogic_openwrt: s905d
-          amlogic_kernel: 5.4.157
+          amlogic_kernel: 5.4.158
           auto_kernel: true
-          amlogic_size: 1024
+          amlogic_size: 512
           
       - name: Upload full image to Release
         uses: ncipollo/release-action@v1
