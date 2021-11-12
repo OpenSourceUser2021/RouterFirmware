@@ -26,6 +26,9 @@ uci commit
 # Disable opkg signature check
 sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
 
+# login TTYD w/o password
+sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd
+
 # Disable autostart by default for some packages
 cd /etc/rc.d
 rm -f S98udptools || true
