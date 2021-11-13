@@ -421,13 +421,13 @@ jobs:
       #     echo "::warning file=mirror.openwrt.cc::Download Link: https://mirror.openwrt.cc/releases/targets/bcm27xx/bcm2709"
      
       # ref https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md
-      # kernel version -> https://github.com/ophub/flippy-kernel/tree/main/library/
+      # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
       - name: Package Armvirt as OpenWrt
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
           armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
           amlogic_openwrt: s905d
-          amlogic_kernel: 5.4.158
+          amlogic_kernel: 5.4.158_5.10.79_5.15.2
           auto_kernel: true
           amlogic_size: 512
           
