@@ -427,7 +427,7 @@ jobs:
         with:
           armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
           amlogic_openwrt: s905d
-          amlogic_kernel: 5.4.158_5.10.79_5.15.2
+          amlogic_kernel: 5.4.159_5.10.79_5.15.2
           auto_kernel: true
           amlogic_size: 512
           
