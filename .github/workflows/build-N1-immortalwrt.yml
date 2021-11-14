@@ -423,12 +423,14 @@ jobs:
       # ref https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md
       # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
       # https://github.com/ophub/op/blob/main/.github/workflows/build-openwrt-s9xxx.yml
+      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/make
       - name: Package Armvirt as OpenWrt
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
           armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
           amlogic_openwrt: s905d
           amlogic_size: 512
+          auto_kernel: ture
           
       - name: Upload full image to Release
         uses: ncipollo/release-action@v1
