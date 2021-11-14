@@ -420,10 +420,11 @@ jobs:
       #     ./OneDriveUploader -f -c "./auth.json" -s $OPENWRTROOT/$TARGET-$SUBTARGET.zip -r "archive/$(date +%Y)/$(date +%m)/$(date +%d)/releases/bin-archive"
       #     echo "::warning file=mirror.openwrt.cc::Download Link: https://mirror.openwrt.cc/releases/targets/bcm27xx/bcm2709"
      
-      # ref https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md
+      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md ->
+      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/action.yml ->
+      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/make ->
       # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
-      # https://github.com/ophub/op/blob/main/.github/workflows/build-openwrt-s9xxx.yml
-      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/make
+      
       - name: Package Armvirt as OpenWrt
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
