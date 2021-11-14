@@ -400,7 +400,7 @@ jobs:
           name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
           allowUpdates: true
           replacesArtifacts: true
-          tag: ${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
+          tag: openwrt_s9xxx_immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ env.OPENWRTROOT }}/bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/*
