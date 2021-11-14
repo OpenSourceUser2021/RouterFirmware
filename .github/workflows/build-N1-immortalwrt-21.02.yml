@@ -21,7 +21,7 @@ env:
   SOURCE_BRANCH: openwrt-21.02
   DIY_SH: scripts/immortalwrt.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
-  TOOLCHAIN_TAG: toolchain
+  TOOLCHAIN_TAG: toolchain-21.02
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   TZ: Asia/Shanghai
