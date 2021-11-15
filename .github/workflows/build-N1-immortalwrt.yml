@@ -16,12 +16,12 @@ on:
 #    types: started
 
 env:
-  CONFIG_FILE: config/BOX/S905D.config
+  CONFIG_FILE: config/amlogic/amlogic-a53.config
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
   SOURCE_BRANCH: openwrt-18.06-k5.4
   DIY_SH: scripts/immortalwrt.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
-  TOOLCHAIN_TAG: toolchain
+  TOOLCHAIN_TAG: toolchain-openwrt-18.06-k5.4
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   TZ: Asia/Shanghai
