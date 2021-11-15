@@ -22,7 +22,7 @@ env:
   DIY_SH: scripts/immortalwrt.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
   TOOLCHAIN_TAG: toolchain-k5.10
-  TOOLCHAIN_RELEASE_UPLOAD: false
+  TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   TZ: Asia/Shanghai
 
@@ -251,7 +251,7 @@ jobs:
       - name: Load Custom Configuration
         run: |
           [ -e files ] && mv files $OPENWRTROOT/files
-          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRTROOT/.config
+          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRTROOT/.config
           cat config/general-packages-new.config >> $OPENWRTROOT/.config
           chmod +x scripts/*.sh
           cd $OPENWRTROOT
