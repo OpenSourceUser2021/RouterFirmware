@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Raspberry Pi 2 immortalwrt
+name: Raspberry Pi 2 immortalwrt-18.06-k5.4
 
 on:
   workflow_dispatch:
@@ -251,7 +251,7 @@ jobs:
       - name: Load Custom Configuration
         run: |
           [ -e files ] && mv files $OPENWRTROOT/files
-          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRTROOT/.config
+          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRTROOT/.config
           cat config/general-packages-new.config >> $OPENWRTROOT/.config
           chmod +x scripts/*.sh
           cd $OPENWRTROOT
