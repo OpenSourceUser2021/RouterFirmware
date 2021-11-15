@@ -41,9 +41,6 @@ jobs:
       TOOLCHAIN_IMAGE: ${{ steps.env.outputs.TOOLCHAIN_IMAGE }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        
       - name: Initialization Environment
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -55,6 +52,9 @@ jobs:
           sudo -E apt-get -qq clean
           sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           docker image prune -a -f
+          
+      - name: Checkout
+        uses: actions/checkout@main
 
       - name: Clone Source Code
         id: clone
