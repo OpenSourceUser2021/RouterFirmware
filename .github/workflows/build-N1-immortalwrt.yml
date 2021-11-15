@@ -268,7 +268,7 @@ jobs:
         run: |
           cd $OPENWRTROOT
           make download -j64
-          cp -r feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/yacd/ feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/dashboard/
+        #cp -r feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/yacd/ feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/dashboard/
       - name: Compile Packages
         run: |
           cd $OPENWRTROOT
