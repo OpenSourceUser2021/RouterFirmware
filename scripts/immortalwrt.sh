@@ -73,7 +73,7 @@ popd
 sed -i '/$(SDK_BUILD_DIR)\/$(STAGING_SUBDIR_HOST)\/usr\/bin/d' target/sdk/Makefile
 
 # Fix Toolchain
-sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
+#-- sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
 
 # Change default shell to zsh
 #--oem sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
