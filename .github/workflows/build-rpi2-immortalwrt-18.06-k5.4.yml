@@ -21,7 +21,7 @@ env:
   SOURCE_BRANCH: openwrt-18.06-k5.4
   DIY_SH: scripts/immortalwrt.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
-  TOOLCHAIN_TAG: toolchain
+  TOOLCHAIN_TAG: toolchain-rpi2-18.06-k5.4
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   TZ: Asia/Shanghai
@@ -257,6 +257,7 @@ jobs:
           cd $OPENWRTROOT
           ../$DIY_SH
           ../scripts/preset-clash-core.sh armv7
+          sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
           make defconfig
       - name: Install Feeds
         run: |
@@ -399,16 +400,16 @@ jobs:
       
       - name: Set release date
         run: |
-          echo "RELEASE_DATE=$(date +"%Y.%m.%d-%H%M")" >> ${GITHUB_ENV}
+          echo "RELEASE_DATE=$(date +"%Y.%m.%d.%H%M")" >> ${GITHUB_ENV}
           
       - name: Deploy Files To Release
         uses: ncipollo/release-action@v1.8.0
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
-          name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
+          name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-18.06-k5.4
           allowUpdates: true
           replacesArtifacts: true
-          tag: ${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
+          tag: ${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-18.06-k5.4
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ env.OPENWRTROOT }}/bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/*
