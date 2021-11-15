@@ -398,10 +398,10 @@ jobs:
         uses: ncipollo/release-action@v1.8.0
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
-          name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-openwrt-18.06-k5.4
+          name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-18.06-k5.4
           allowUpdates: true
           replacesArtifacts: true
-          tag: openwrt_s9xxx_immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-openwrt-18.06-k5.4
+          tag: openwrt_s9xxx_immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-18.06-k5.4
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ env.OPENWRTROOT }}/bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/*
@@ -437,7 +437,7 @@ jobs:
       - name: Upload full image to Release
         uses: ncipollo/release-action@v1
         with:
-          tag: immortalwrt_s905d_N1_${{ env.PACKAGED_OUTPUTDATE }}
+          tag: immortalwrt_s905d_N1_${{ env.PACKAGED_OUTPUTDATE }}-18.06-k5.4
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
