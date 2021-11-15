@@ -16,12 +16,12 @@ on:
 #    types: started
 
 env:
-  CONFIG_FILE: config/BOX/S905D.config
+  CONFIG_FILE: config/amlogic/amlogic-a53.config
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
   SOURCE_BRANCH: master
   DIY_SH: scripts/immortalwrt.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
-  TOOLCHAIN_TAG: toolchain-k5.10
+  TOOLCHAIN_TAG: toolchain-matser-k5.10
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   TZ: Asia/Shanghai
@@ -268,7 +268,7 @@ jobs:
         run: |
           cd $OPENWRTROOT
           make download -j64
-          cp -r feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/yacd/ feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/dashboard/
+        # cp -r feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/yacd/ feeds/luci/applications/luci-app-openclash/root/usr/share/openclash/dashboard/
       - name: Compile Packages
         run: |
           cd $OPENWRTROOT
@@ -428,7 +428,7 @@ jobs:
         with:
           armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
           amlogic_openwrt: s905d
-          amlogic_kernel: 5.4.159_5.10.79_5.15.2
+          amlogic_kernel: 5.10.79_5.15.2
           amlogic_size: 512
           
       - name: Upload full image to Release
