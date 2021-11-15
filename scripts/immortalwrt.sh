@@ -72,11 +72,12 @@ popd
 # Fix SDK
 sed -i '/$(SDK_BUILD_DIR)\/$(STAGING_SUBDIR_HOST)\/usr\/bin/d' target/sdk/Makefile
 
-# Fix Toolchain
+# steven ->
+# Fix Toolchain, only for branch openwrt-18.06-k5.4
 #-- sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
 
 # Change default shell to zsh
-#--oem sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
-
+#-- sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 # Change default shell from /bin/ash to /bin/bash
 sed -i 's/\/bin\/ash/\/bin\/bash/g' package/base-files/files/etc/passwd
+# steven <-
