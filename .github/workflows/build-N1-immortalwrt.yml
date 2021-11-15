@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build N1 immortalwrt
+name: Build N1 immortalwrt-18.06-k5.4
 
 on:
   workflow_dispatch:
@@ -257,6 +257,7 @@ jobs:
           cd $OPENWRTROOT
           ../$DIY_SH
           ../scripts/preset-clash-core.sh armv8
+          sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
           make defconfig
       - name: Install Feeds
         run: |
@@ -391,16 +392,16 @@ jobs:
       
       - name: Set release date
         run: |
-          echo "RELEASE_DATE=$(date +"%Y.%m.%d-%H%M")" >> ${GITHUB_ENV}
+          echo "RELEASE_DATE=$(date +"%Y.%m.%d.%H%M")" >> ${GITHUB_ENV}
           
       - name: Deploy Files To Release
         uses: ncipollo/release-action@v1.8.0
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
-          name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
+          name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-openwrt-18.06-k5.4
           allowUpdates: true
           replacesArtifacts: true
-          tag: openwrt_s9xxx_immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}
+          tag: openwrt_s9xxx_immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-openwrt-18.06-k5.4
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ env.OPENWRTROOT }}/bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/*
