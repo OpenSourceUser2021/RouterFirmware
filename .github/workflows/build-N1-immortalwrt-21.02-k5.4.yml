@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build N1 immortalwrt-21.02-k5.4
+name: Build N1 immortalwrt-21.02-k5.10
 
 on:
   workflow_dispatch:
@@ -257,6 +257,7 @@ jobs:
           cd $OPENWRTROOT
           ../$DIY_SH
           ../scripts/preset-clash-core.sh armv8
+          sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
           make defconfig
       - name: Install Feeds
         run: |
