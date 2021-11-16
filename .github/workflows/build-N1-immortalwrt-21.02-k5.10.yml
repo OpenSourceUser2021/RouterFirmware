@@ -19,7 +19,7 @@ env:
   CONFIG_FILE: config/amlogic/amlogic-a53.config
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
   SOURCE_BRANCH: openwrt-21.02
-  DIY_SH: scripts/immortalwrt.sh
+  DIY_SH: scripts/immortalwrt-2102.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
   TOOLCHAIN_TAG: toolchain-openwrt-21.02-k5.10
   TOOLCHAIN_RELEASE_UPLOAD: true
