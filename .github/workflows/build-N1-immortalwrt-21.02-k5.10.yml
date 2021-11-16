@@ -287,7 +287,7 @@ jobs:
           sed -i "s/platform/$PLATFORM/g" distfeeds.conf
           cd $OPENWRTROOT
           mkdir -p files/etc/uci-defaults/
-          cp ../scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
+          cp ../scripts/init-settings-21.02.sh files/etc/uci-defaults/99-init-settings
           mkdir -p files/www/snapshots
           cp -r bin/targets files/www/snapshots
           mkdir -p files/etc/opkg
