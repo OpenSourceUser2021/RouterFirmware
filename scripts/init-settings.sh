@@ -32,6 +32,10 @@ sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
 # login TTYD w/o password
 sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd
 cp -r /usr/share/openclash/yacd/ /usr/share/openclash/dashboard/
+
+# fix system log issue "daemon.err modprobe: - bpfilter"
+cd /lib/modules/5.*/
+mv bpfilter.ko bpfilter.ko.bak
 # steven <-
 
 # Disable autostart by default for some packages
