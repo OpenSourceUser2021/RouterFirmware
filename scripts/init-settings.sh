@@ -31,7 +31,7 @@ sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
 # steven ->
 # login TTYD w/o password
 sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd
-cp -r /root/usr/share/openclash/yacd/ /root/usr/share/openclash/dashboard/
+cp -r /usr/share/openclash/yacd/ /usr/share/openclash/dashboard/
 # steven <-
 
 # Disable autostart by default for some packages
