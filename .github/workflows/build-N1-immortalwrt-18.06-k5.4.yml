@@ -22,7 +22,7 @@ env:
   DIY_SH: scripts/immortalwrt.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
   TOOLCHAIN_TAG: toolchain-openwrt-18.06-k5.4
-  TOOLCHAIN_RELEASE_UPLOAD: true
+  TOOLCHAIN_RELEASE_UPLOAD: false
   FIRMWARE_RELEASE_UPLOAD: true
   TZ: Asia/Shanghai
 
@@ -401,7 +401,7 @@ jobs:
           name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-18.06-k5.4
           allowUpdates: true
           replacesArtifacts: true
-          tag: openwrt_s9xxx_immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-18.06-k5.4
+          tag: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}-${{ env.RELEASE_DATE }}-18.06-k5.4
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ env.OPENWRTROOT }}/bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/*
@@ -432,17 +432,17 @@ jobs:
           armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
           amlogic_openwrt: s905d
           amlogic_kernel: 5.4.159_5.10.79_5.15.2
-          amlogic_size: 512
+          amlogic_size: 768
           
       - name: Upload full image to Release
         uses: ncipollo/release-action@v1
         with:
-          tag: immortalwrt_s905d_N1_${{ env.PACKAGED_OUTPUTDATE }}-18.06-k5.4
+          tag: immortalwrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-18.06-k5.4
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            This is OpenWrt firmware for Amlogic S9xxx N1 STB.
+            This is OpenWrt firmware for Amlogic S9xxx STB.
  
     
       - name: Delete Artifacts
