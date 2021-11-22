@@ -400,7 +400,7 @@ jobs:
 
       - name: Organize Files
         run: |
-          export BUILD_DATE=$(date +"%Y.%m.%d")
+          export BUILD_DATE=$(date +"%Y.%m.%d.%H%M")
           echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
           cd $OPENWRT_ROOT_PATH/bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET
           rm -rf packages
@@ -419,10 +419,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ env.OPENWRT_ROOT_PATH }}/bin/targets/${{ env.DEVICE_TARGET }}/${{ env.DEVICE_SUBTARGET }}/*
       
+      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md ->
+      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/action.yml ->
+      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/make ->
+      # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
       - name: Package Armvirt as OpenWrt
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
-          armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
+          armvirt64_path: workspace/openwrt/bin/targets/*/*/*.tar.gz
           amlogic_openwrt: s905d
           amlogic_kernel: 5.4.160_5.10.80_5.15.3
           amlogic_size: 512
