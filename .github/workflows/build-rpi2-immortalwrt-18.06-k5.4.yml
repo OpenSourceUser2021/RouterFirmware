@@ -328,7 +328,14 @@ jobs:
             mv key-build.pub $(usign -F -p key-build.pub)
           fi
           cd $OPENWRT_ROOT_PATH
-          echo "dtparam=i2c_arm=on,audio=on" >> target/linux/bcm27xx/image/config.txt
+          # oem -overclock--->
+          # echo "dtparam=i2c_arm=on,audio=on" >> target/linux/bcm27xx/image/config.txt
+          echo "arm_freq=1050 #d4=900" >> target/linux/bcm27xx/image/config.txt
+          echo "sdram_freq=525 #d4=450" >> target/linux/bcm27xx/image/config.txt
+          echo "over_voltage=2 #d4=0" >> target/linux/bcm27xx/image/config.txt
+          echo "temp_limit=80 #d4=85" >> target/linux/bcm27xx/image/config.txt
+          echo "dtparam=sd_overclock=85 #d4=50" >> target/linux/bcm27xx/image/config.txt
+          # oem <---
           mkdir -p files/etc/uci-defaults/
           cp $GITHUB_WORKSPACE/scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
           mkdir -p files/www/snapshots
