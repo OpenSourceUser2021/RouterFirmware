@@ -53,7 +53,7 @@ jobs:
         echo "RELEASES_BRANCH=${RELEASES_BRANCH}" >> $GITHUB_ENV
         echo "COMPILE_STARTINGTIME=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
 
-    - name: Build OpenWrt firmware
+    - name: Download default-rootfs.tar.gz
       id: build
       run: |
         [ -d openwrt-armvirt ] || mkdir -p openwrt-armvirt
