@@ -36,6 +36,9 @@ cp -r /usr/share/openclash/yacd/ /usr/share/openclash/dashboard/
 # fix system log issue "daemon.err modprobe: - bpfilter"
 cd /lib/modules/5.*/
 mv bpfilter.ko bpfilter.ko.bak
+
+# Disable IPV6 ula prefix
+sed -i 's/^[^#].*option ula/#&/' /etc/config/network
 # steven <-
 
 # Disable autostart by default for some packages
