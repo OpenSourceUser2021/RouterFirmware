@@ -25,14 +25,18 @@ pushd package/community
 # Add luci-app-oaf
 git clone --depth=1 https://github.com/destan19/OpenAppFilter -b oaf-3.0.1
 
+popd
+
 # Add luci-app-amlogic
-svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic
+svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 # aliyundrive webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
+svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav package/aliyundrive-webdav
+svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
 
-popd
+#koolproxy
+git clone https://github.com/project-lede/luci-app-godproxy package/luci-app-godproxy
+# git clone https://github.com/godros/luci-app-ikoolproxy package/luci-app-ikoolproxy
 
 # Fix mt76 wireless driver
 pushd package/kernel/mt76
