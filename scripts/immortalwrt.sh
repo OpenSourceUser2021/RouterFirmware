@@ -31,8 +31,8 @@ popd
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 # aliyundrive webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav package/aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
+svn co https://github.com/jerrykuku/go-aliyundrive-webdav package/go-aliyundrive-webdav
+svn co https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/luci-app-go-aliyundrive-webdav
 
 #koolproxy
 git clone https://github.com/project-lede/luci-app-godproxy package/luci-app-godproxy
