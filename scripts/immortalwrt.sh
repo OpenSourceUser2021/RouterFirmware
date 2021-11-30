@@ -21,10 +21,8 @@ sed -i "s/%C/%C (${DATE_VERSION})/g" package/base-files/files/etc/openwrt_releas
 # Clone community packages to package/community
 mkdir package/community
 pushd package/community
-
 # Add luci-app-oaf
 git clone --depth=1 https://github.com/destan19/OpenAppFilter -b oaf-3.0.1
-
 popd
 
 # Add luci-app-amlogic
@@ -35,13 +33,13 @@ git clone https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliy
 git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
 
 #koolproxy
-git clone https://github.com/project-lede/luci-app-godproxy package/luci-app-godproxy
-# git clone https://github.com/godros/luci-app-ikoolproxy package/luci-app-ikoolproxy
+git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
 # Fix mt76 wireless driver
 pushd package/kernel/mt76
 sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
 popd
+
 # Rename hostname to OpenWrt
 pushd package/base-files/files/bin
 sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
