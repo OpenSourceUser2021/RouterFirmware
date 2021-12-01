@@ -286,7 +286,7 @@ jobs:
           cd $OPENWRT_ROOT_PATH
           chmod +x $GITHUB_WORKSPACE/scripts/*.sh
           $GITHUB_WORKSPACE/$DIY_SH
-          sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
+          #--sed -i 's/LICENSE/LICENSES/g' target/toolchain/Makefile
           $GITHUB_WORKSPACE/scripts/preset-clash-core.sh $CLASH_BINARY_PLATFORM
           make defconfig
 
