@@ -22,11 +22,11 @@ sed -i "s/%C/%C (${DATE_VERSION})/g" package/base-files/files/etc/openwrt_releas
 mkdir package/community
 pushd package/community
 # Add luci-app-oaf
-git clone --depth=1 https://github.com/destan19/OpenAppFilter -b oaf-3.0.1
+#-- git clone --depth=1 https://github.com/destan19/OpenAppFilter -b oaf-3.0.1
 popd
 
 # Add luci-app-amlogic
-svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+#-- svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 # aliyundrive webdav
 git clone https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliyundrive-webdav
