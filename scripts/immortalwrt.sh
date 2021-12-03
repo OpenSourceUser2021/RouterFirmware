@@ -37,6 +37,7 @@ git clone --depth 1 https://github.com/iwrt/luci-app-ikoolproxy.git package/luci
 
 # use official openclash source
 rm -rf package/luci-app-openclash
+rm -rf feeds/luci/applications/luci-app-openclash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
 # Fix mt76 wireless driver
