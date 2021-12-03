@@ -29,11 +29,11 @@ popd
 #-- svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 # aliyundrive webdav
-git clone https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliyundrive-webdav
-git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
+git clone --depth 1 https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliyundrive-webdav
+git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
 
 #koolproxy
-git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
+git clone --depth 1 https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
 # use official openclash source
 rm -rf package/luci-app-openclash
