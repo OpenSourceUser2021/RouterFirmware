@@ -19,6 +19,9 @@ uci set network.lan.ipaddr='192.168.1.250'
 uci set network.lan.gateway='192.168.1.1'
 uci set network.lan.dns='192.168.1.1'
 uci set dhcp.lan.ignore='1'
+
+# login TTYD w/o password
+uci set ttyd.@ttyd[0].command='/bin/login -f root'
 # steven <-
 
 # Check file system during boot
@@ -29,8 +32,6 @@ uci commit
 sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
 
 # steven ->
-# login TTYD w/o password
-sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd
 cp -r /usr/share/openclash/yacd/ /usr/share/openclash/dashboard/
 
 # fix system log issue "daemon.err modprobe: - bpfilter"
