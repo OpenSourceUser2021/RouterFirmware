@@ -317,7 +317,7 @@ jobs:
           fi
           cd $OPENWRT_ROOT_PATH
           mkdir -p files/etc/uci-defaults/
-          cp $GITHUB_WORKSPACE/scripts/init-settings-21.02.sh.sh files/etc/uci-defaults/99-init-settings
+          cp $GITHUB_WORKSPACE/scripts/init-settings-21.02.sh files/etc/uci-defaults/99-init-settings
           mkdir -p files/www/snapshots
           cp -r bin/targets files/www/snapshots
           cp $GITHUB_WORKSPACE/data/usb_boot_n1.apk files/boot
