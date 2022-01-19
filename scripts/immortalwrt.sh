@@ -50,8 +50,6 @@ pushd package/base-files/files/bin
 sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
 popd
 
-# Fix SDK
-sed -i '/$(SDK_BUILD_DIR)\/$(STAGING_SUBDIR_HOST)\/usr\/bin/d' target/sdk/Makefile
 
 # steven ->
 # Fix Toolchain, only for branch openwrt-18.06-k5.4
