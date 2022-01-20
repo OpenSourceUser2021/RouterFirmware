@@ -46,9 +46,9 @@ sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\
 popd
 
 # Rename hostname to OpenWrt
-pushd package/base-files/files/bin
-sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
-popd
+#pushd package/base-files/files/bin
+#sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
+#popd
 
 
 # steven ->
