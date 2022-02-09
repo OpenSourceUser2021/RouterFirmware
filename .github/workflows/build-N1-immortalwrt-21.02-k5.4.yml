@@ -393,6 +393,7 @@ jobs:
           export BUILD_DATE=$(date +"%Y.%m.%d.%H%M")
           echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
           cd $OPENWRT_ROOT_PATH/bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET
+          mv immortalwrt-armvirt-64-default-rootfs.tar.gz openwrt-armvirt-64-default-rootfs.tar.gz
           rm -rf packages
           df -hT $PWD
 
