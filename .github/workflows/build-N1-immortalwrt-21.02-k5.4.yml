@@ -414,14 +414,23 @@ jobs:
       # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/action.yml ->
       # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/make ->
       # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
+      #- name: Package Armvirt as OpenWrt
+      #  uses: ophub/amlogic-s9xxx-openwrt@main
+      #  with:
+      #    armvirt64_path: workspace/openwrt/bin/targets/*/*/*.tar.gz
+      #    amlogic_openwrt: s905d
+      #    amlogic_kernel: 5.4.160_5.10.80_5.15.3
+      #    amlogic_size: 768
+      
+     # https://github.com/unifreq/openwrt_packit/blob/master/README.ACTION.md   
       - name: Package Armvirt as OpenWrt
-        uses: ophub/amlogic-s9xxx-openwrt@main
-        with:
-          armvirt64_path: workspace/openwrt/bin/targets/*/*/*.tar.gz
-          amlogic_openwrt: s905d
-          amlogic_kernel: 5.4.160_5.10.80_5.15.3
-          amlogic_size: 768
-          
+        uses: unifreq/openwrt_packit@master
+        env:
+          OPENWRT_ARMVIRT: workspace/openwrt/bin/targets/*/*/*.tar.gz
+          PACKAGE_SOC: s905d
+          KERNEL_VERSION_NAME: 5.4.178_5.10.99_5.15.22
+     
+     
       - name: Upload full image to Release
         uses: ncipollo/release-action@v1
         with:
