@@ -429,6 +429,8 @@ jobs:
           OPENWRT_ARMVIRT: workspace/openwrt/bin/targets/*/*/*.tar.gz
           PACKAGE_SOC: s905d
           KERNEL_VERSION_NAME: 5.4.178_5.10.99_5.15.22
+          OPENWRT_VER: 21.02
+          ENABLE_WIFI_K504_VALUE: 0
      
      
       - name: Upload full image to Release
