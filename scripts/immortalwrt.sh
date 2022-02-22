@@ -29,9 +29,11 @@ popd
 #-- svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 # aliyundrive webdav
-git clone --depth 1 https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliyundrive-webdav
-git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
+#- git clone --depth 1 https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliyundrive-webdav
+#- git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
 
+git clone --depth 1 https://github.com/messense/aliyundrive-webdav/tree/main/openwrt/aliyundrive-webdav.git package/go-aliyundrive-webdav
+git clone --depth 1 https://github.com/messense/aliyundrive-webdav/tree/main/openwrt/luci-app-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
 #koolproxy
 git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
