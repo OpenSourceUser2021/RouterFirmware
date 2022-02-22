@@ -31,8 +31,8 @@ popd
 # aliyundrive webdav
 #- git clone --depth 1 https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliyundrive-webdav
 #- git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav package/go-aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-go-aliyundrive-webdav
+svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav package/aliyundrive-webdav
+svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
 
 #koolproxy
 git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
