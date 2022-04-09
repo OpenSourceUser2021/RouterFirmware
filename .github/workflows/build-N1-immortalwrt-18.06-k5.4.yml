@@ -393,10 +393,10 @@ jobs:
           export BUILD_DATE=$(date +"%Y.%m.%d.%H%M")
           echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
           cd $OPENWRT_ROOT_PATH/bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET
-          mv immortalwrt-armvirt-64-default-rootfs.tar.gz openwrt-armvirt-64-default-rootfs.tar.gz
           rm -rf packages
           df -hT $PWD
-
+     #mv immortalwrt-armvirt-64-default-rootfs.tar.gz openwrt-armvirt-64-default-rootfs.tar.gz
+     
       - name: Deploy Files To Release
         uses: ncipollo/release-action@v1.8.0
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
@@ -416,10 +416,10 @@ jobs:
       - name: Package Armvirt as OpenWrt
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
-          armvirt64_path: workspace/openwrt/bin/targets/*/*/*.tar.gz
-          amlogic_openwrt: s905d
-          amlogic_kernel: 5.4.160_5.10.80_5.15.3
-          amlogic_size: 768
+          openwrt_path: workspace/openwrt/bin/targets/*/*/*rootfs.tar.gz
+          openwrt_soc: s905d
+          openwrt_kernel: 5.4.188_5.10.110_5.15.33
+          openwrt_size: 768
      
      # wifi infi?
      # https://github.com/unifreq/openwrt_packit/blob/master/README.ACTION.md   
