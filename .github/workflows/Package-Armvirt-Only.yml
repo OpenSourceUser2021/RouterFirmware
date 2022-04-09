@@ -66,7 +66,7 @@ jobs:
     - name: Package Armvirt as OpenWrt
       uses: ophub/amlogic-s9xxx-openwrt@main
       with:
-        openwrt_path: workspace/openwrt/bin/targets/*/*/*rootfs.tar.gz
+        openwrt_path: openwrt-armvirt/*rootfs.tar.gz
         openwrt_soc: s905d
         openwrt_kernel: 5.4.188_5.10.110_5.15.33
         openwrt_size: 768
