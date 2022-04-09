@@ -60,18 +60,16 @@ jobs:
         curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases" | grep -o "immortalwrt-armvirt-64/immortalwrt-armvirt-.*.tar.gz" | head -n 1 > DOWNLOAD_ARMVIRT
         [ -s DOWNLOAD_ARMVIRT ] && wget -q -P openwrt-armvirt https://github.com/${GITHUB_REPOSITORY}/releases/download/$(cat DOWNLOAD_ARMVIRT)
 
-      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md ->
-      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/action.yml ->
-      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/make ->
-      # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
-      
+     # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md ->
+     # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
+  
     - name: Package Armvirt as OpenWrt
       uses: ophub/amlogic-s9xxx-openwrt@main
       with:
-        armvirt64_path: openwrt-armvirt/*.tar.gz
-        amlogic_openwrt: s905d
-        amlogic_kernel: 5.4.160_5.10.80_5.15.3
-        amlogic_size: 768
+        openwrt_path: workspace/openwrt/bin/targets/*/*/*rootfs.tar.gz
+        openwrt_soc: s905d
+        openwrt_kernel: 5.4.188_5.10.110_5.15.33
+        openwrt_size: 768
           
     - name: Upload full image to Release
       uses: ncipollo/release-action@v1
