@@ -57,8 +57,9 @@ jobs:
       id: build
       run: |
         [ -d openwrt-armvirt ] || mkdir -p openwrt-armvirt
-        curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases" | grep -o "immortalwrt-armvirt-64/*rootfs.tar.gz" | head -n 1 > DOWNLOAD_ARMVIRT
-        [ -s DOWNLOAD_ARMVIRT ] && wget -q -P openwrt-armvirt https://github.com/${GITHUB_REPOSITORY}/releases/download/$(cat DOWNLOAD_ARMVIRT)
+        wget -q -P openwrt-armvirt https://github.com/${GITHUB_REPOSITORY}/releases/download/immortalwrt-armvirt-64/*rootfs.tar.gz
+      #curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases" | grep -o "immortalwrt-armvirt-64/*rootfs.tar.gz" | head -n 1 > DOWNLOAD_ARMVIRT
+      #[ -s DOWNLOAD_ARMVIRT ] && wget -q -P openwrt-armvirt https://github.com/${GITHUB_REPOSITORY}/releases/download/$(cat DOWNLOAD_ARMVIRT)
 
      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md ->
      # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
