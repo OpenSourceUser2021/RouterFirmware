@@ -56,10 +56,14 @@ jobs:
     - name: Download default-rootfs.tar.gz
       id: build
       run: |
-        [ -d openwrt-armvirt ] || mkdir -p openwrt-armvirt
-        wget -q -P openwrt-armvirt https://github.com/${GITHUB_REPOSITORY}/releases/download/immortalwrt-armvirt-64/*rootfs.tar.gz
+        [ -d openwrt-armvirt ] || mkdir -p openwrt-armvirt 
+        wget -q -P openwrt-armvirt  https://github.com/OpenSourceUser2021/OpenWrt4Router/releases/download/immortalwrt-armvirt-64/openwrt-armvirt-64-default-rootfs.tar.gz
       #curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases" | grep -o "immortalwrt-armvirt-64/*rootfs.tar.gz" | head -n 1 > DOWNLOAD_ARMVIRT
       #[ -s DOWNLOAD_ARMVIRT ] && wget -q -P openwrt-armvirt https://github.com/${GITHUB_REPOSITORY}/releases/download/$(cat DOWNLOAD_ARMVIRT)
+
+
+       # wget -q -P openwrt-armvirt https://github.com/${GITHUB_REPOSITORY}/releases/download/immortalwrt-armvirt-64/*rootfs.tar.gz
+
 
      # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md ->
      # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
