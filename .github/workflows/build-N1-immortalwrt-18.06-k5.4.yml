@@ -418,7 +418,7 @@ jobs:
         with:
           openwrt_path: workspace/openwrt/bin/targets/*/*/*rootfs.tar.gz
           openwrt_soc: s905d
-          openwrt_kernel: 5.10.117_5.14.41_5.17.9
+          openwrt_kernel: 5.10.117_5.15.41_5.17.9
           openwrt_size: 768
      
      # wifi infi?
