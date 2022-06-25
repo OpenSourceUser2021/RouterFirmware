@@ -34,8 +34,11 @@ popd
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav package/aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
 
-#koolproxy
+# koolproxy
 git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
+
+# alist
+git clone --depth 1 https://github.com/sbwml/openwrt-alist.git package/luci-app-alist
 
 # use official openclash source
 rm -rf package/luci-app-openclash
