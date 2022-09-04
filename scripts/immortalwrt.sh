@@ -45,6 +45,11 @@ rm -rf package/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
+# luci-app-timecontrol
+rm -rf package/luci-app-timecontrol
+rm -rf feeds/luci/applications/luci-app-timecontrol
+svn co https://github.com/Lienol/openwrt-package/commits/main/luci-app-timecontrol package/luci-app-timecontrol
+
 # Fix mt76 wireless driver
 pushd package/kernel/mt76
 sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
