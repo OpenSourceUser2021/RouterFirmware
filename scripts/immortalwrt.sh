@@ -48,7 +48,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/l
 # luci-app-timecontrol
 rm -rf package/luci-app-timecontrol
 rm -rf feeds/luci/applications/luci-app-timecontrol
-svn co https://github.com/Lienol/openwrt-package/commits/main/luci-app-timecontrol package/luci-app-timecontrol
+svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-timecontrol package/luci-app-timecontrol
 
 # Fix mt76 wireless driver
 pushd package/kernel/mt76
