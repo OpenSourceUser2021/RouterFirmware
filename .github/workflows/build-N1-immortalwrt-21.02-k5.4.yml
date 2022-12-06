@@ -418,7 +418,7 @@ jobs:
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
           openwrt_path: workspace/openwrt/bin/targets/*/*/*rootfs.tar.gz
-          openwrt_soc: s905d
+          openwrt_board: s905d
           openwrt_kernel: 5.4.225_5.10.156_6.0.10
           openwrt_size: 768
       
