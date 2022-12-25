@@ -419,7 +419,7 @@ jobs:
         with:
           openwrt_path: workspace/openwrt/bin/targets/*/*/*rootfs.tar.gz
           openwrt_board: s905d
-          openwrt_kernel: 5.4.225_5.10.156_6.0.10
+          openwrt_kernel: 5.4.228_6.1.1
           openwrt_size: 768
       
      
