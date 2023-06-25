@@ -16,7 +16,7 @@ on:
 #    types: started
 
 env:
-  CONFIG_FILE: config/amlogic/amlogic-a53.config
+  CONFIG_FILE: config/amlogic/amlogic-a53-armsr.config
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
   SOURCE_BRANCH: openwrt-23.05
   DIY_SH: scripts/immortalwrt.sh
