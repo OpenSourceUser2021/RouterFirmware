@@ -38,10 +38,10 @@ svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-ali
 git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
 # alist
-# git clone --depth 1 https://github.com/sbwml/openwrt-alist.git package/luci-app-alist
+git clone --depth 1 https://github.com/sbwml/openwrt-alist.git package/luci-app-alist
 # fix alist build fail issue -> https://github.com/sbwml/luci-app-alist
-rm -rf feeds/packages/lang/golang
-svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
 
 # use official openclash source
 rm -rf package/luci-app-openclash
