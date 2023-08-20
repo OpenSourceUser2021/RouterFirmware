@@ -38,6 +38,8 @@ svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-ali
 git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
 # alist
+rm -rf package/luci-app-alist
+rm -rf feeds/luci/applications/luci-app-alist
 git clone --depth 1 https://github.com/sbwml/openwrt-alist.git package/luci-app-alist
 # fix alist build fail issue -> https://github.com/sbwml/luci-app-alist
 #rm -rf feeds/packages/lang/golang
