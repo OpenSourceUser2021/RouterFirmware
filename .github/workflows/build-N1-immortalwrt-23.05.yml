@@ -413,8 +413,8 @@ jobs:
           artifacts: ${{ env.OPENWRT_ROOT_PATH }}/bin/targets/${{ env.DEVICE_TARGET }}/${{ env.DEVICE_SUBTARGET }}/*
       
       # https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/README.cn.md ->
-      # kernel version -> https://github.com/ophub/kernel/tree/main/pub/stable
-      - name: Package Armvirt as OpenWrt
+      # kernel version -> https://github.com/ophub/kernel/releases/tag/kernel_stable
+      - name: Package Armsr as OpenWrt
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
           openwrt_path: workspace/openwrt/bin/targets/*/*/*rootfs.tar.gz
