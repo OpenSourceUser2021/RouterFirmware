@@ -37,6 +37,9 @@ svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-ali
 # koolproxy
 git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
+# homeroxy
+git clone --depth 1 https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+
 # alist
 rm -rf package/luci-app-alist
 rm -rf feeds/luci/applications/luci-app-alist
