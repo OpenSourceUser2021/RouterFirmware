@@ -35,7 +35,7 @@ svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
 
 # koolproxy
-git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
+#- 23.05 git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
 # homeroxy
 # git clone --depth 1 https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
@@ -56,7 +56,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/l
 # luci-app-timecontrol
 rm -rf package/luci-app-timecontrol
 rm -rf feeds/luci/applications/luci-app-timecontrol
-svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-timecontrol package/luci-app-timecontrol
+#-- 23.05 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-timecontrol package/luci-app-timecontrol
 
 # Fix mt76 wireless driver
 pushd package/kernel/mt76
