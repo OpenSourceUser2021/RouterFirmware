@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build N1 immortalwrt-master-K6.1
+name: Build N1 immortalwrt-23.05-K6.1
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ on:
 env:
   CONFIG_FILE: config/amlogic/amlogic-a53-armsr.config
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
-  SOURCE_BRANCH: master
+  SOURCE_BRANCH: openwrt-23.05
   DIY_SH: scripts/immortalwrt.sh
   TOOLCHAIN_TAG: toolchain-openwrt-matser
   CLASH_BINARY_PLATFORM: armv8
@@ -394,10 +394,10 @@ jobs:
         uses: ncipollo/release-action@v1.8.0
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
-          name: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-master
+          name: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-23.05
           allowUpdates: true
           replacesArtifacts: true
-          tag: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-master
+          tag: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-23.05
           body: ${{ env.BUILD_DATE }}
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -417,7 +417,7 @@ jobs:
       - name: Upload full image to Release
         uses: ncipollo/release-action@v1
         with:
-          tag: immortalwrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-master
+          tag: immortalwrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-23.05
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
