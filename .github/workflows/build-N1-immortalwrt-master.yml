@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build N1 immortalwrt-23.05-K5.15
+name: Build N1 immortalwrt-master-K6.1
 
 on:
   workflow_dispatch:
@@ -18,9 +18,9 @@ on:
 env:
   CONFIG_FILE: config/amlogic/amlogic-a53-armsr.config
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
-  SOURCE_BRANCH: openwrt-23.05
+  SOURCE_BRANCH: master
   DIY_SH: scripts/immortalwrt.sh
-  TOOLCHAIN_TAG: toolchain-openwrt-23.05
+  TOOLCHAIN_TAG: toolchain-openwrt-matser
   CLASH_BINARY_PLATFORM: armv8
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
@@ -29,7 +29,7 @@ env:
 
 jobs:
   Toolchain:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     outputs:
       OPENWRT_ROOT_PATH: ${{ steps.clone.outputs.OPENWRT_ROOT_PATH }}
@@ -66,7 +66,6 @@ jobs:
           git clone $SOURCE_URL -b $SOURCE_BRANCH workspace/openwrt
           cd workspace/openwrt
           echo "OPENWRT_ROOT_PATH=$PWD" >> $GITHUB_ENV
-          echo "::set-output name=OPENWRT_ROOT_PATH::$(echo $PWD)"
 
       - name: Generate Toolchain Config
         run: |
@@ -81,26 +80,19 @@ jobs:
         run: |
           export CURRENT_BRANCH="$(git symbolic-ref --short HEAD)"
           echo "CURRENT_BRANCH=$CURRENT_BRANCH" >> $GITHUB_ENV
-          echo "::set-output name=CURRENT_BRANCH::$(echo $CURRENT_BRANCH)"
           cd $OPENWRT_ROOT_PATH
           export SOURCE_OWNER="$(echo $SOURCE_URL | awk -F '/' '{print $(NF-1)}')"
           echo "SOURCE_OWNER=$SOURCE_OWNER" >> $GITHUB_ENV
-          echo "::set-output name=SOURCE_OWNER::$(echo $SOURCE_OWNER)"
           export SOURCE_REPO="$(echo $SOURCE_URL | awk -F '/' '{print $(NF)}')"
           echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
-          echo "::set-output name=SOURCE_REPO::$(echo $SOURCE_REPO)"
           export DEVICE_TARGET=$(cat .config | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
           echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
-          echo "::set-output name=DEVICE_TARGET::$(echo $DEVICE_TARGET)"
           export DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
           echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
-          echo "::set-output name=DEVICE_SUBTARGET::$(echo $DEVICE_SUBTARGET)"
           export DEVICE_PLATFORM=$(cat .config | grep CONFIG_TARGET_ARCH_PACKAGES | awk -F '"' '{print $2}')
           echo "DEVICE_PLATFORM=$DEVICE_PLATFORM" >> $GITHUB_ENV
-          echo "::set-output name=DEVICE_PLATFORM::$(echo $DEVICE_PLATFORM)"
           export TOOLCHAIN_IMAGE="toolchain-$SOURCE_OWNER-$SOURCE_REPO-$SOURCE_BRANCH-$DEVICE_TARGET-$DEVICE_SUBTARGET"
           echo "TOOLCHAIN_IMAGE=$TOOLCHAIN_IMAGE" >> $GITHUB_ENV
-          echo "::set-output name=TOOLCHAIN_IMAGE::$(echo $TOOLCHAIN_IMAGE)"
 
       - name: Compare Toolchain Hash
         id: hash
@@ -108,12 +100,11 @@ jobs:
           cd $OPENWRT_ROOT_PATH
           export CURRENT_HASH=$(git log --pretty=tformat:"%H" -n1 tools toolchain)
           echo "CURRENT_HASH=$CURRENT_HASH" >> $GITHUB_ENV
-          echo "::set-output name=CURRENT_HASH::$(echo $CURRENT_HASH)"
           echo "CURRENT_HASH is $CURRENT_HASH"
           export CACHE_HASH=$(curl -fSsL https://github.com/$GITHUB_REPOSITORY/releases/download/$TOOLCHAIN_TAG/$TOOLCHAIN_IMAGE.hash)
           echo "CACHE_HASH is $CACHE_HASH"
           if [ -z "$CACHE_HASH" ] || [ "$CURRENT_HASH" != "$CACHE_HASH" ]; then
-            echo "::set-output name=REBUILD_TOOLCHAIN::true"
+            echo "REBUILD_TOOLCHAIN=true" >> $GITHUB_ENV
           fi
 
       - name: Install Feeds
@@ -172,7 +163,7 @@ jobs:
 
   Build:
     needs: [Toolchain]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Restore Variables
@@ -354,7 +345,7 @@ jobs:
 
   Upload:
     needs: [Build, Toolchain]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout
@@ -403,10 +394,10 @@ jobs:
         uses: ncipollo/release-action@v1.8.0
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
-          name: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-23.05
+          name: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-master
           allowUpdates: true
           replacesArtifacts: true
-          tag: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-23.05
+          tag: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-master
           body: ${{ env.BUILD_DATE }}
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -426,7 +417,7 @@ jobs:
       - name: Upload full image to Release
         uses: ncipollo/release-action@v1
         with:
-          tag: immortalwrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-23.05
+          tag: immortalwrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-master
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
