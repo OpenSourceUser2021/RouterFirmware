@@ -50,6 +50,7 @@ jobs:
           sudo -E apt-get -qq update
           sudo -E apt-get -qq install squashfs-tools $(curl -fsSL git.io/depends-ubuntu-2004)
           sudo -E apt-get -qq install libfuse-dev
+          sudo -E apt-get -qq install libdwarves1
           sudo -E apt-get -qq install libdwarf-dev
           sudo -E apt-get -qq install libdw-dev
           libdwarves1
