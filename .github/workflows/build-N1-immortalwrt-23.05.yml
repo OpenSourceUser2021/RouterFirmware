@@ -403,7 +403,7 @@ jobs:
       # mv immortalwrt-armvirt-64-default-rootfs.tar.gz openwrt-armvirt-64-default-rootfs.tar.gz
 
       - name: Deploy Files To Release
-        uses: ncipollo/release-action@v1.8.0
+        uses: ncipollo/release-action@v1.10.1
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
           name: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-23.05
@@ -427,7 +427,7 @@ jobs:
       
      
       - name: Upload full image to Release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.10.1
         with:
           tag: immortalwrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-23.05
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
