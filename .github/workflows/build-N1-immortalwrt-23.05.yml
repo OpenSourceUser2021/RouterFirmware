@@ -157,7 +157,7 @@ jobs:
 
       - name: Upload Toolchain Image To Release
         if: env.TOOLCHAIN_RELEASE_UPLOAD == 'true' && steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
-        uses: ncipollo/release-action@v1.8.0
+        uses: ncipollo/release-action@v1.10.1
         with:
           name: toolchain-image
           allowUpdates: true
