@@ -48,6 +48,11 @@ git clone --depth 1 https://github.com/sbwml/openwrt-alist.git package/luci-app-
 #rm -rf feeds/packages/lang/golang
 #svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
 
+
+rm -rf package/luci-app-homeproxy
+rm -rf feeds/luci/applications/luci-app-homeproxy
+git clone --depth 1 https://github.com/douglarek/luci-app-homeproxy.git package/luci-app-homeproxy
+
 # use official openclash source
 rm -rf package/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
