@@ -172,17 +172,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Restore Variables
-        run: |
-          echo "CURRENT_BRANCH=$(echo '${{needs.Toolchain.outputs.CURRENT_BRANCH}}')" >> $GITHUB_ENV
-          echo "OPENWRT_ROOT_PATH=$(echo '${{needs.Toolchain.outputs.OPENWRT_ROOT_PATH}}')" >> $GITHUB_ENV
-          echo "SOURCE_OWNER=$(echo '${{needs.Toolchain.outputs.SOURCE_OWNER}}')" >> $GITHUB_ENV
-          echo "SOURCE_REPO=$(echo '${{needs.Toolchain.outputs.SOURCE_REPO}}')" >> $GITHUB_ENV
-          echo "DEVICE_PLATFORM=$(echo '${{needs.Toolchain.outputs.DEVICE_PLATFORM}}')" >> $GITHUB_ENV
-          echo "DEVICE_TARGET=$(echo '${{needs.Toolchain.outputs.DEVICE_TARGET}}')" >> $GITHUB_ENV
-          echo "DEVICE_SUBTARGET=$(echo '${{needs.Toolchain.outputs.DEVICE_SUBTARGET}}')" >> $GITHUB_ENV
-          echo "TOOLCHAIN_IMAGE=$(echo '${{needs.Toolchain.outputs.TOOLCHAIN_IMAGE}}')" >> $GITHUB_ENV
-
       - name: Initialization Environment
         env:
           DEBIAN_FRONTEND: noninteractive
