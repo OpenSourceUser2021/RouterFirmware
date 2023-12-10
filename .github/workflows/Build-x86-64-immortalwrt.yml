@@ -438,19 +438,7 @@ jobs:
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ env.OPENWRT_ROOT_PATH }}/bin/targets/${{ env.DEVICE_TARGET }}/${{ env.DEVICE_SUBTARGET }}/*
-      - name: Upload full image to Release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: immortalwrt_x86-64_${{ env.PACKAGED_OUTPUTDATE }}-23.05
-          artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
-          allowUpdates: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            This is OpenWrt firmware for Amlogic S9xxx STB.
-            * Firmware information
-            Default IP: 192.168.1.250
-            Default username: root
-            Default password: password
+          
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v1
         with:
