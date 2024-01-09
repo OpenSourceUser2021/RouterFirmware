@@ -345,7 +345,6 @@ jobs:
           cp $GITHUB_WORKSPACE/scripts/init-settings-x64.sh files/etc/uci-defaults/99-init-settings
           mkdir -p files/www/snapshots
           cp -r bin/targets files/www/snapshots
-          cp $GITHUB_WORKSPACE/files/etc/config/network  files/etc/config/
           make package/install -j$(nproc) || make package/install -j1 V=s
           make target/install -j$(nproc) || make target/install -j1 V=s
           make json_overview_image_info
