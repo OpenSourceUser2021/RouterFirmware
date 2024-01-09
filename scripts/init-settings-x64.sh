@@ -19,8 +19,8 @@ uci set luci.main.lang='zh_cn'
 # uci set network.lan.gateway='192.168.1.1'
 # uci set network.lan.dns='192.168.1.1'
 # uci set dhcp.lan.ignore='1'
-uci set network.wan.device='eth0'
-uci set network.wan6.device='eth0'
+uci set network.wan.device='eth7'
+uci set network.wan6.device='eth7'
 
 uci del_list network.@device[0].ports='eth0'
 uci del_list network.@device[0].ports='eth1'
@@ -31,13 +31,14 @@ uci del_list network.@device[0].ports='eth5'
 uci del_list network.@device[0].ports='eth6'
 uci del_list network.@device[0].ports='eth7'
 
+uci add_list network.@device[0].ports='eth0'
 uci add_list network.@device[0].ports='eth1'
 uci add_list network.@device[0].ports='eth2'
 uci add_list network.@device[0].ports='eth3'
 uci add_list network.@device[0].ports='eth4'
 uci add_list network.@device[0].ports='eth5'
 uci add_list network.@device[0].ports='eth6'
-uci add_list network.@device[0].ports='eth7'
+
 
 # login TTYD w/o password
 uci set ttyd.@ttyd[0].command='/bin/login -f root'
