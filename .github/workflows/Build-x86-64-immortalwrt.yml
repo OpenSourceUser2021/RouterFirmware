@@ -18,7 +18,7 @@ on:
 env:
   CONFIG_FILE: config/x86/64.config
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
-  SOURCE_BRANCH: master
+  SOURCE_BRANCH: openwrt-23.05
   DIY_SH: scripts/immortalwrt.sh
   TOOLCHAIN_TAG: toolchain-openwrt-23.05
   CLASH_BINARY_PLATFORM: amd64
