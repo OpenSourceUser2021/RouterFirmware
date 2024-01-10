@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build x86/64 immortalwrt
+name: Build x86/64 immortalwrt-23.05-K5.15
 
 on:
   workflow_dispatch:
