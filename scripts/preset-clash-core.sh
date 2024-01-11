@@ -9,16 +9,24 @@
 # Blog: https://mlapp.cn
 #=================================================
 
+
+# 预置openclash内核
 mkdir -p files/etc/openclash/core
 
-open_clash_main_url=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/releases/tags/Clash | grep /clash-linux-$1 | sed 's/.*url\": \"//g' | sed 's/\"//g')
-# offical_clash_main_url=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/tags/v1.3.5 | grep /clash-linux-$1 | sed 's/.*url\": \"//g' | sed 's/\"//g')
-clash_tun_url=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/releases/tags/TUN-Premium | grep /clash-linux-$1 | sed 's/.*url\": \"//g' | sed 's/\"//g')
-clash_game_url=$(curl -sL https://api.github.com/repos/vernesong/OpenClash/releases/tags/TUN | grep /clash-linux-$1 | sed 's/.*url\": \"//g' | sed 's/\"//g')
 
-#-oem-- wget -qO- $open_clash_main_url | tar xOvz > files/etc/openclash/core/clash
-# wget -qO- $offical_clash_main_url | gunzip -c > files/etc/openclash/core/clash
-wget -qO- $clash_tun_url | gunzip -c > files/etc/openclash/core/clash_tun
-#-oem-- wget -qO- $clash_game_url | tar xOvz > files/etc/openclash/core/clash_game
+# d大 的 dev内核
+CLASH_DEV_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/latest | grep /clash-linux-arm64-v1 | awk -F '"' '{print $4}')
+# d大 的 premium内核
+CLASH_TUN_URL=$(curl -sL https://api.github.com/repos/Dreamacro/clash/releases/tags/premium | grep /clash-linux-arm64-2 | awk -F '"' '{print $4}' | head -n 1)
+# Meta内核版本
+CLASH_META_URL=$(curl -sL https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/tags/Prerelease-Alpha | grep /clash.meta-linux-arm64-alpha | awk -F '"' '{print $4}' | head -n 1)
 
+# CLASH_DEV_URL="https://raw.githubusercontent.com/vernesong/OpenClash/master/core-lateset/dev/clash-linux-arm64.tar.gz"
+# CLASH_TUN_URL=$(curl -fsSL https://api.github.com/repos/vernesong/OpenClash/contents/core-lateset/premium | grep download_url | grep $1 | awk -F '"' '{print $4}')
+# CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/master/core-lateset/meta/clash-linux-${1}.tar.gz"
+
+wget -qO- $CLASH_DEV_URL | gunzip -c > files/etc/openclash/core/clash
+wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
+wget -qO- $CLASH_META_URL | gunzip -c > files/etc/openclash/core/clash_meta
+# 给内核权限
 chmod +x files/etc/openclash/core/clash*
