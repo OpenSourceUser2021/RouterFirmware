@@ -56,7 +56,8 @@ git clone --depth 1 https://github.com/douglarek/luci-app-homeproxy.git package/
 # use official openclash source
 rm -rf package/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+#svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+git clone --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 
 # luci-app-timecontrol
 rm -rf package/luci-app-timecontrol
