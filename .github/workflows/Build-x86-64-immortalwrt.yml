@@ -311,12 +311,13 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/scripts/*.sh
           $GITHUB_WORKSPACE/$DIY_SH
           $GITHUB_WORKSPACE/scripts/preset-clash-core.sh $CLASH_BINARY_PLATFORM
-        # make defconfig
+
 
       - name: Download DL Package
         id: download
         run: |
           cd $OPENWRT_ROOT_PATH
+          make defconfig
           make download -j64
 
       - name: Compile Packages
