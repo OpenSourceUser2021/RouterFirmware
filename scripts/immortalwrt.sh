@@ -63,11 +63,11 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-
 rm -rf package/luci-app-timecontrol
 rm -rf feeds/luci/applications/luci-app-timecontrol
 #-- 23.05 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-timecontrol package/luci-app-timecontrol
-git clone --depth 1 --filter=tree:0 https://github.com/Lienol/openwrt-package package/luci-app-timecontrol
-cd package/luci-app-timecontrol
-git sparse-checkout set --no-cone luci-app-timecontrol
-git checkout
-cd ../..
+#git clone --depth 1 --filter=tree:0 https://github.com/Lienol/openwrt-package package/luci-app-timecontrol
+#cd package/luci-app-timecontrol
+#git sparse-checkout set --no-cone luci-app-timecontrol
+#git checkout
+#cd ../..
 
 # Fix mt76 wireless driver
 pushd package/kernel/mt76
