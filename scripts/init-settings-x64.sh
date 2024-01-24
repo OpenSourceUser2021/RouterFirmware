@@ -59,7 +59,7 @@ cp -r /usr/share/openclash/yacd/ /usr/share/openclash/dashboard/
 # mv bpfilter.ko bpfilter.ko.bak
 
 # Disable IPV6 ula prefix
-sed -i 's/^[^#].*option ula/#&/' /etc/config/network
+#sed -i 's/^[^#].*option ula/#&/' /etc/config/network
 # steven <-
 
 # Disable autostart by default for some packages
