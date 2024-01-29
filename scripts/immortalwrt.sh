@@ -35,7 +35,7 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.
 #svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
 
 # koolproxy
-#- 23.05 git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
+git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
 # homeroxy
 # git clone --depth 1 https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
