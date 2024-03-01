@@ -32,7 +32,7 @@ uci commit
 sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
 
 # steven ->
-cp -r /usr/share/openclash/yacd/ /usr/share/openclash/dashboard/
+# cp -r /usr/share/openclash/yacd/ /usr/share/openclash/dashboard/
 
 # fix system log issue "daemon.err modprobe: - bpfilter"
 cd /lib/modules/5.*/
