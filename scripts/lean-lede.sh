@@ -69,11 +69,6 @@ git sparse-checkout set --no-cone luci-app-timecontrol
 git checkout
 cd ../..
 
-# Fix mt76 wireless driver
-pushd package/kernel/mt76
-sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
-popd
-
 # Rename hostname to OpenWrt
 #pushd package/base-files/files/bin
 #sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
