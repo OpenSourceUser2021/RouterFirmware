@@ -422,10 +422,10 @@ jobs:
         uses: ncipollo/release-action@v1
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
-          name: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-23.05
+          name: OpenWrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-lean
           allowUpdates: true
           replacesArtifacts: true
-          tag: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-23.05
+          tag: OpenWrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-lean
           body: ${{ env.BUILD_DATE }}
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -434,7 +434,7 @@ jobs:
       - name: Upload full image to Release
         uses: ncipollo/release-action@v1
         with:
-          tag: immortalwrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-23.05
+          tag: OpenWrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-lean
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -444,8 +444,7 @@ jobs:
             Default IP: 192.168.1.250
             Default username: root
             Default password: password
- 
-    
+
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v2
         with:
