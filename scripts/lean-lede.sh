@@ -9,9 +9,12 @@
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
 # Mod zzz-default-settings
-pushd package/emortal/default-settings/files
+pushd package/lean/default-settings/files
 sed -i '/http/d' zzz-default-settings
-sed -i '/openwrt_luci/d' zzz-default-settings
+sed -i '/18.06/d' zzz-default-settings
+export orig_version=$(cat "zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
+export date_version=$(date -d "$(rdate -n -4 -p ntp.aliyun.com)" +'%Y-%m-%d')
+sed -i "s/${orig_version}/${orig_version} (${date_version})/g" zzz-default-settings
 popd
 
 # Add date version
