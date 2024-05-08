@@ -19,6 +19,7 @@ env:
   CONFIG_FILE: config/amlogic/amlogic-N1-lean.config
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
+  FEEDS_CONF: feeds.conf.default
   DIY_SH: scripts/lean-lede.sh
   WEBROOT: /data/dnmp/www/openwrt.cc
   TOOLCHAIN_TAG: toolchain-lean
@@ -120,7 +121,13 @@ jobs:
           if [ -z "$CACHE_HASH" ] || [ "$CURRENT_HASH" != "$CACHE_HASH" ]; then
             echo "REBUILD_TOOLCHAIN=true" >> $GITHUB_OUTPUT
           fi
-
+      - name: Load custom feeds
+        run: |
+         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF $OPENWRT_ROOT_PATH/feeds.conf.default
+        # chmod +x $DIY_P1_SH
+        # cd $OPENWRT_ROOT_PATH
+        # $GITHUB_WORKSPACE/$DIY_P1_SH
+        
       - name: Install Feeds
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
         run: |
@@ -281,7 +288,14 @@ jobs:
           sudo mount -t overlay overlay -o lowerdir=openwrt-ro,upperdir=overlay,workdir=workdir openwrt
           cd $OPENWRT_ROOT_PATH
           git pull
-
+          
+      - name: Load custom feeds
+        run: |
+         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF $OPENWRT_ROOT_PATH/feeds.conf.default
+        # chmod +x $DIY_P1_SH
+        # cd $OPENWRT_ROOT_PATH
+        # $GITHUB_WORKSPACE/$DIY_P1_SH
+        
       - name: Install Feeds
         run: |
           cd $OPENWRT_ROOT_PATH
