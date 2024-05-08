@@ -424,24 +424,15 @@ jobs:
           allowUpdates: true
           replacesArtifacts: true
           tag: OpenWrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-lean
-          body: ${{ env.BUILD_DATE }}
-          commit: ${{ env.CURRENT_BRANCH }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: ${{ env.OPENWRT_ROOT_PATH }}/bin/targets/${{ env.DEVICE_TARGET }}/${{ env.DEVICE_SUBTARGET }}/*
-
-      - name: Upload full image to Release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: OpenWrt_s905d_${{ env.PACKAGED_OUTPUTDATE }}-lean
-          artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
-          allowUpdates: true
-          token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             This is OpenWrt firmware for Amlogic S9xxx STB.
             * Firmware information
             Default IP: 192.168.1.250
             Default username: root
             Default password: password
+          commit: ${{ env.CURRENT_BRANCH }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: ${{ env.OPENWRT_ROOT_PATH }}/bin/targets/${{ env.DEVICE_TARGET }}/${{ env.DEVICE_SUBTARGET }}/*
 
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v2
