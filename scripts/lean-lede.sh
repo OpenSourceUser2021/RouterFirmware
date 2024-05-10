@@ -77,7 +77,7 @@ cd ../..
 #sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
 #popd
 
-#- rm -rf feeds/packages/utils/apk
+rm -rf feeds/packages/utils/apk
 
 # steven ->
 # Fix Toolchain, only for branch openwrt-18.06-k5.4
