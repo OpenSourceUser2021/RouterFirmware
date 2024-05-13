@@ -19,23 +19,23 @@ export DATE_VERSION=$(date -d "$(rdate -n -4 -p pool.ntp.org)" +'%Y-%m-%d')
 sed -i "s/%C/%C (${DATE_VERSION})/g" package/base-files/files/etc/openwrt_release
 
 # Clone community packages to package/community
-mkdir package/community
-pushd package/community
+#mkdir package/community
+#pushd package/community
 # Add luci-app-oaf
 #-- git clone --depth=1 https://github.com/destan19/OpenAppFilter -b oaf-3.0.1
-popd
+#popd
 
 # Add luci-app-amlogic
 #-- svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 # aliyundrive webdav
-git clone --depth 1 https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliyundrive-webdav
-git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
+#git clone --depth 1 https://github.com/jerrykuku/go-aliyundrive-webdav.git package/go-aliyundrive-webdav
+#git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git package/luci-app-go-aliyundrive-webdav
 #svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav package/aliyundrive-webdav
 #svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
 
 # koolproxy
-git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
+#git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
 # homeroxy
 # git clone --depth 1 https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
@@ -54,14 +54,14 @@ git clone --depth 1 https://github.com/1wrt/luci-app-ikoolproxy.git package/luci
 #git clone --depth 1 https://github.com/douglarek/luci-app-homeproxy.git package/luci-app-homeproxy
 
 # use official openclash source
-rm -rf package/luci-app-openclash
-rm -rf feeds/luci/applications/luci-app-openclash
+#rm -rf package/luci-app-openclash
+#rm -rf feeds/luci/applications/luci-app-openclash
 #svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
-git clone --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+#git clone --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 
 # luci-app-timecontrol
-rm -rf package/luci-app-timecontrol
-rm -rf feeds/luci/applications/luci-app-timecontrol
+#rm -rf package/luci-app-timecontrol
+#rm -rf feeds/luci/applications/luci-app-timecontrol
 #-- 23.05 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-timecontrol package/luci-app-timecontrol
 #git clone --depth 1 --filter=tree:0 https://github.com/Lienol/openwrt-package package/luci-app-timecontrol
 #cd package/luci-app-timecontrol
@@ -70,9 +70,9 @@ rm -rf feeds/luci/applications/luci-app-timecontrol
 #cd ../..
 
 # Fix mt76 wireless driver
-pushd package/kernel/mt76
-sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
-popd
+#pushd package/kernel/mt76
+#sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
+#popd
 
 # Rename hostname to OpenWrt
 #pushd package/base-files/files/bin
