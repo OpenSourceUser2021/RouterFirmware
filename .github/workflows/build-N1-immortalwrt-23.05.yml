@@ -433,7 +433,7 @@ jobs:
         with:
           openwrt_path: workspace/openwrt/bin/targets/*/*/*rootfs.tar.gz
           openwrt_board: s905d
-          # kernel_usage: flippy
+          kernel_usage: flippy
           openwrt_kernel: 5.15.151_6.1.81_6.6.20
           openwrt_size: 768
       
