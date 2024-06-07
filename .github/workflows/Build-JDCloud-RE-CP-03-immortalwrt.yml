@@ -348,7 +348,7 @@ jobs:
           fi
           cd $OPENWRT_ROOT_PATH
           mkdir -p files/etc/uci-defaults/
-          cp $GITHUB_WORKSPACE/scripts/init-settings-x64.sh files/etc/uci-defaults/99-init-settings
+          cp $GITHUB_WORKSPACE/scripts/init-settings-MTK.sh files/etc/uci-defaults/99-init-settings
           mkdir -p files/www/snapshots
           cp -r bin/targets files/www/snapshots
           make package/install -j$(nproc) || make package/install -j1 V=s
