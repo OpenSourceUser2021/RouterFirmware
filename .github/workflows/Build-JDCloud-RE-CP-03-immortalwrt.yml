@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build mediatek/filogic immortalwrt-23.05-K6.6
+name: Build MT798X immortalwrt-23.05-K6.6
 #name: Build mediatek/filogic immortalwrt-master-K6.6
 on:
   workflow_dispatch:
