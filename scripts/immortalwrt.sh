@@ -22,7 +22,7 @@ sed -i "s/%C/%C (${DATE_VERSION})/g" package/base-files/files/etc/openwrt_releas
 #mkdir package/community
 #pushd package/community
 # Add luci-app-oaf
-#-- git clone --depth=1 https://github.com/destan19/OpenAppFilter -b oaf-3.0.1
+git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 #popd
 
 # Add luci-app-amlogic
