@@ -54,6 +54,12 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git package/custom/lu
 #sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
 #popd
 
+# update MT76 driver 
+# link https://github.com/immortalwrt/immortalwrt/blob/master/package/kernel/mt76/Makefile
+sed -i "s/2024-04-03/2024-07-13/g" package/kernel/mt76/Makefile
+sed -i "s/1e336a8582dce2ef32ddd440d423e9afef961e71/3b47d9df427c4833605a172f2a8f0e0012b04c80/g" package/kernel/mt76/Makefile
+sed -i "s/48e787bcf0c526d9511375a8a3a77c850de9deca79f6177d2eeea7ca8bd798e2/23c3aaa53fb2e088446eb18148a44d3edcd3a0eda1ee41cf5cbf56064ebbee58/g" package/kernel/mt76/Makefile
+
 
 # Change default shell to zsh
 #-- sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
