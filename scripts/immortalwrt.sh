@@ -36,8 +36,9 @@ rm -rf feeds/packages/net/alist
 rm -rf feeds/luci/applications/luci-app-alist
 git clone --depth 1 https://github.com/sbwml/openwrt-alist.git package/custom/luci-app-alist
 # fix alist build fail issue -> https://github.com/sbwml/luci-app-alist
+sudo -E apt-get -qq install libfuse-dev
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 #wechatpush
 rm -rf feeds/luci/applications/luci-app-wechatpush
@@ -56,9 +57,9 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git package/custom/lu
 
 # update MT76 driver 
 # link https://github.com/immortalwrt/immortalwrt/blob/master/package/kernel/mt76/Makefile
-sed -i "s/2024-04-03/2024-07-13/g" package/kernel/mt76/Makefile
-sed -i "s/1e336a8582dce2ef32ddd440d423e9afef961e71/3b47d9df427c4833605a172f2a8f0e0012b04c80/g" package/kernel/mt76/Makefile
-sed -i "s/48e787bcf0c526d9511375a8a3a77c850de9deca79f6177d2eeea7ca8bd798e2/23c3aaa53fb2e088446eb18148a44d3edcd3a0eda1ee41cf5cbf56064ebbee58/g" package/kernel/mt76/Makefile
+#sed -i "s/2024-04-03/2024-07-13/g" package/kernel/mt76/Makefile
+#sed -i "s/1e336a8582dce2ef32ddd440d423e9afef961e71/3b47d9df427c4833605a172f2a8f0e0012b04c80/g" package/kernel/mt76/Makefile
+#sed -i "s/48e787bcf0c526d9511375a8a3a77c850de9deca79f6177d2eeea7ca8bd798e2/23c3aaa53fb2e088446eb18148a44d3edcd3a0eda1ee41cf5cbf56064ebbee58/g" package/kernel/mt76/Makefile
 
 
 # Change default shell to zsh
