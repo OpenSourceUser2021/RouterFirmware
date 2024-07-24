@@ -435,10 +435,10 @@ jobs:
         uses: ncipollo/release-action@v1
         if: env.FIRMWARE_RELEASE_UPLOAD == 'true'
         with:
-          name: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-${{ env.SOURCE_BRANCH }}
+          name: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.SOURCE_BRANCH }}-${{ env.BUILD_DATE }}
           allowUpdates: true
           replacesArtifacts: true
-          tag: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}-${{ env.SOURCE_BRANCH }}
+          tag: immortalwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.SOURCE_BRANCH }}-${{ env.BUILD_DATE }}
           body: ${{ env.BUILD_DATE }}
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
