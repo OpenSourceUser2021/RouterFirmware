@@ -7,7 +7,7 @@
 #=================================================
 
 #name: Build MT798X immortalwrt-23.05-K5.15
-name: Build MT798X immortalwrt-master-K6.6
+name: Build MT798X immortalwrt-23.05.x-K6.6
 on:
   workflow_dispatch:
   # schedule:
