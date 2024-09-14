@@ -50,6 +50,11 @@ rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/custom/luci-app-openclash
 
 
+# fix linux kernel 6.6.x udp issue
+rm -rf target/linux/generic/hack-6.6/600-net-enable-fraglist-GRO-by-default.patch
+rm -rf target/linux/generic/pending-6.6/680-net-add-TCP-fraglist-GRO-support.patch
+rm -rf target/linux/generic/pending-6.6/681-net-remove-NETIF_F_GSO_FRAGLIST-from-NETIF_F_GSO_SOF.patch
+
 # Rename hostname to OpenWrt
 #pushd package/base-files/files/bin
 #sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
