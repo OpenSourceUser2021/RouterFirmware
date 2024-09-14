@@ -51,6 +51,7 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git package/custom/lu
 
 
 # fix linux kernel 6.6.x udp issue
+# compare files with https://github.com/coolsnowwolf/lede/tree/master/target/linux/generic then del all different files
 rm -rf target/linux/generic/hack-6.6/600-net-enable-fraglist-GRO-by-default.patch
 rm -rf target/linux/generic/pending-6.6/680-net-add-TCP-fraglist-GRO-support.patch
 rm -rf target/linux/generic/pending-6.6/681-net-remove-NETIF_F_GSO_FRAGLIST-from-NETIF_F_GSO_SOF.patch
