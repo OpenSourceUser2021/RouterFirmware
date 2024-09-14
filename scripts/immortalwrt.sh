@@ -54,6 +54,9 @@ git clone --depth 1 https://github.com/vernesong/OpenClash.git package/custom/lu
 rm -rf target/linux/generic/hack-6.6/600-net-enable-fraglist-GRO-by-default.patch
 rm -rf target/linux/generic/pending-6.6/680-net-add-TCP-fraglist-GRO-support.patch
 rm -rf target/linux/generic/pending-6.6/681-net-remove-NETIF_F_GSO_FRAGLIST-from-NETIF_F_GSO_SOF.patch
+rm -rf target/linux/generic/backport-6.6/611-01-v6.11-udp-Allow-GSO-transmit-from-devices-with-no-checksum.patch
+rm -rf target/linux/generic/backport-6.6/611-02-v6.11-net-Make-USO-depend-on-CSUM-offload.patch
+rm -rf target/linux/generic/backport-6.6/611-03-v6.11-udp-Fall-back-to-software-USO-if-IPv6-extension-head.patch
 
 # Rename hostname to OpenWrt
 #pushd package/base-files/files/bin
