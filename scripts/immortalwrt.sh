@@ -37,8 +37,10 @@ rm -rf feeds/luci/applications/luci-app-alist
 git clone --depth 1 https://github.com/sbwml/openwrt-alist.git package/custom/luci-app-alist
 # fix alist build fail issue -> https://github.com/sbwml/luci-app-alist
 sudo -E apt-get -qq install libfuse-dev
-rm -rf feeds/packages/lang/golang
-git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+
+# golang only for 21.xx
+#rm -rf feeds/packages/lang/golang
+#git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 #wechatpush
 rm -rf feeds/luci/applications/luci-app-wechatpush
