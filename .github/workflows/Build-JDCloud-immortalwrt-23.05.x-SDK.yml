@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build MT798X immortalwrt-23.05-K5.4 with SDK
+name: Build MT798X SDK with K5.4
 #name: Build MT798X immortalwrt-master-K6.6
 on:
   workflow_dispatch:
